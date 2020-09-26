@@ -1,0 +1,30 @@
+nav {
+	background-color: #0275d8;
+}
+
+textarea {
+	height: 12em;
+	width: 20em;
+}
+nav li {
+	color: white;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.content-padding {
+	padding: 40px;
+}
+
+.table {
+	width: 1px;
+}
+
+.table th {
+	color: white;
+	background-color: #807c7c;
+}
+
+.table td {
+	background-color: #f8f9fa;
+}

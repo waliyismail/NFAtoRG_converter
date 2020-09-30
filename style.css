@@ -28,3 +28,53 @@ nav li {
 .table td {
 	background-color: #f8f9fa;
 }
+* {
+	box-sizing: border-box;
+  }
+  
+  body {
+	font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Float four columns side by side */
+  .column {
+	float: left;
+	width: 20%;
+	padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {
+	align-content:center;  
+	margin: 0 -5px;
+	justify-content: center;
+		}
+  
+  /* Clear floats after the columns */
+  .row:after {
+	content: "";
+	display: table;
+	clear: both;
+	overflow: hidden;
+  }
+  
+  /* Style the counter cards */
+  .card {
+	position: relative;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+	padding: 16px;
+	background-color: #f1f1f1;
+	text-align: center;
+	width: 250px;
+	height: 450px;
+  }
+  
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+	.column {
+	  width: 100%;
+	  display: block;
+	  margin-bottom: 20px;
+	}
+	 
+  }

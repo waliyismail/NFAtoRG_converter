@@ -43,90 +43,65 @@
 	<!-- Content -->
     <div class="content-padding">
 	
-	  <div style="float: left; padding-right: 70px;">
+		<div style="float: left; padding-right: 70px;">
 	    <label>NFA (input):</label>
 		<br>
 
-		<div>
-		<label>Formal description (Q,&Sigma,q0,F):</label>
-		<form>
-			<div class="form-group row">
-				<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Q</label>
-				<div class="col-sm-10">
-				<input type="text" class="form-control form-control-sm" id="states" placeholder="e.g q1,q2 etc">
+			<div>
+			<label>Formal description (Q,&Sigma;,q0,F):</label><br>
+			<label class="text-secondary">&#60;enter epsilon for &epsilon;&#62;</label>
+			<form>
+				<div class="form-group row">
+					<label for="states" class="col-sm-2 col-form-label col-form-label-sm">Q (states)</label>
+					<div class="col-sm-10">
+					<input type="text" class="form-control form-control-sm" id="states" placeholder="e.g q1 q2 etc , space separated">
+					</div>
 				</div>
-			</div>
-			<div class="form-group row">
-				<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">&Sigma (alphabet)</label>
-				<div class="col-sm-10">
-				<input type="text" class="form-control form-control-sm" id="alphabets" placeholder="e.g 0,1 or a,b etc">
+				<div class="form-group row">
+					<label for="alphabets" class="col-sm-2 col-form-label col-form-label-sm">&Sigma; (alphabet)</label><br>
+					<div class="col-sm-10">
+					<input type="text" class="form-control form-control-sm" id="alphabets" placeholder="e.g 0 1 or a b etc, space separated">
+					</div>
 				</div>
-			</div>
-			<div class="form-group row">
-				<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">q0 (start state)</label>
-				<div class="col-sm-10">
-				<input type="text" class="form-control form-control-sm" id="startState" placeholder="e.g q1">
+				<div class="form-group row">
+					<label for="startState" class="col-sm-2 col-form-label col-form-label-sm">q0 (start state)</label>
+					<div class="col-sm-10">
+					<input type="text" class="form-control form-control-sm" id="startState" placeholder="e.g q1; one only">
+					</div>
 				</div>
-			</div>
-			<div class="form-group row">
-				<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">F (final state)</label>
-				<div class="col-sm-10">
-				<input type="text" class="form-control form-control-sm" id="finalState" placeholder="e.g q3">
+				<div class="form-group row">
+					<label for="finalStates" class="col-sm-2 col-form-label col-form-label-sm">F (final state)</label>
+					<div class="col-sm-10">
+					<input type="text" class="form-control form-control-sm" id="finalStates" placeholder="e.g q2 q3; space separated">
+					</div>
 				</div>
-			</div>
+			</form>
 			<button type="submit" class="btn btn-primary my-1" onclick=createTable()>Transition table</button>
-		</form>
+			</div>
+			<br>
+			<div>
+			<label>Transition Table:</label>
+			<!-- user need to fill the transition table -->
+			<table id="transition-table" class="table table-bordered">
+			</table>
+			<button type="submit" class="btn btn-primary my-1" id="doneBut" hidden onclick=createTable()>Done</button>
+			</div>
 		</div>
-		<div>
-		<label>Transition Table</label>
-		<!-- user need to fill the transition table -->
-	    <table id="transition-table" class="table table-bordered">
-		  <thead>
-			<tr>
-			  <th scope="col"></th>
-			  <th scope="col">a</th></th>
-			  <th scope="col">b</th>
-			  <th scope="col">ε</th>
-			</tr>
-		  </thead>
-		  <tbody>
-			<tr>
-			  <th scope="row">>A</th></th>
-			  <td>R</td>
-			  <td>Ø</td>
-			  <td>Ø</td>
-			</tr>
-			<tr>
-			  <th scope="row">R</th>
-			  <td>S</td>
-			  <td>R</td>
-			  <td>Ø</td>
-			</tr>
-			<tr>
-			  <th scope="row">S</th>
-			  <td>Ø</td>
-			  <td>T</td>
-			  <td>Ø</td>
-			</tr>
-			<tr>
-			  <th scope="row">*T</th>
-			  <td>Ø</td>
-			  <td>Ø</td>
-			  <td>R</td>
-			</tr>
-		  </tbody>
-		</table>
-		<button id="convert-nfa-btn" type="button" onclick="convertla()" class="btn btn-primary">Convert to ReG</button>
-	  </div>
-	  
-	  <div>
-	    <label>Check Strings (input):</label>
-	    <br>
-	    <textarea id="nfa-check-input"></textarea>
+
 		<br>
-		<button id="nfa-check-btn" type="button" class="btn btn-primary" onclick="check()">Check</button>
-	  </div>
-	  <br><br><br><br><br>
+
+		  
+		  <br>
+		<div style="float: left; padding-left: 70px;">
+			<div>
+				<label>Check Strings (input):</label>
+				<br>
+				<textarea id="nfa-check-input"></textarea>
+				<br>
+				<button id="nfa-check-btn" type="button" class="btn btn-primary" onclick="check()">Check</button>
+			</div>
+		</div>
+
 	  <div id="rg-output" style="float: left; padding-right: 70px;">
 	    <p>Regular Grammar</p>
 	    <p>Q = {q1, q2}</p>
@@ -134,10 +109,11 @@
 		<p>d: Q x S  Q</p>
 		<p>p0 = q1</p>
 		<p>F = {q1}</p>
+
+		<button id="convert-nfa-btn" type="button" onclick="convertla()" class="btn btn-primary">Convert to ReG</button>
+
 	  </div>
 	  <br>
-	  
-	</div>
 
   </body>
 </html>

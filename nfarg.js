@@ -33,7 +33,7 @@ function createTable()
             if(c==0)
             {
                 //enter each states
-                newTable += '<td>'+states_array[r-1]+'</td>';
+                newTable += '<td>'+states_array[r-1].toUpperCase()+'</td>';
                 continue;
             }
             if(r == 0 && c > 0)

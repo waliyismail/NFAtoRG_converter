@@ -41,63 +41,79 @@
     </nav>
 	
 	<!-- Content -->
-    <div class="content-padding">
-	
-		<div style="float: left; padding-right: 70px;">
-	    <label>NFA (input):</label>
-		<br>
-
-			<div>
-			<label>Formal description (Q,&Sigma;,q0,F):</label><br>
-			<label class="text-secondary">&#60;enter epsilon for &epsilon;&#62;</label>
-			<form id="fdform">
-				<div class="form-group row">
-					<label for="states" class="col-sm-2 col-form-label col-form-label-sm">Q (states)</label>
-					<div class="col-sm-10">
-					<input required type="text" class="form-control form-control-sm" id="states" placeholder="e.g q1 q2 etc , space separated">
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="alphabets" class="col-sm-2 col-form-label col-form-label-sm">&Sigma; (alphabet)</label><br>
-					<div class="col-sm-10">
-					<input required type="text" class="form-control form-control-sm" id="alphabets" placeholder="e.g 0 1 or a b etc, min 3 space separated">
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="startState" class="col-sm-2 col-form-label col-form-label-sm">q0 (start state)</label>
-					<div class="col-sm-10">
-					<input required type="text" class="form-control form-control-sm" id="startState" placeholder="e.g q1; one only">
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="finalStates" class="col-sm-2 col-form-label col-form-label-sm">F (final state)</label>
-					<div class="col-sm-10">
-					<input required type="text" class="form-control form-control-sm" id="finalStates" placeholder="e.g q2 q3; space separated">
-					</div>
-				</div>
-			</form>
-			<button type="submit" class="btn btn-primary my-1" onclick=createTable()>Transition table</button>
-			</div>
+    <div class="content-padding container">
+		<div class="row">
+			<div class="col-sm">
+			<!-- <div style="float: left; padding-right: 70px;"> -->
+			<label>NFA (input):</label>
 			<br>
-			<div id="tt" hidden>
-			<label>Transition Table:</label><br>
-			<label class="text-secondary">fill the transition below</label>
-			<!-- user need to fill the transition table -->
-			<table id="transition-table" class="table table-bordered">
-			</table>
-			<button type="submit" class="btn btn-primary my-1" id="doneBut" onclick=done()>Done</button>
+	
+				<div>
+				<label>Formal description (Q,&Sigma;,q0,F):</label><br>
+				<label class="text-secondary">&#60;enter epsilon for &epsilon;&#62;</label>
+				<form id="fdform">
+					<div class="form-group row">
+						<label for="states" class="col-sm-2 col-form-label col-form-label-sm">Q (states)</label>
+						<div class="col-sm-10">
+						<input required type="text" class="form-control form-control-sm" id="states" placeholder="e.g q1 q2 etc , space separated">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="alphabets" class="col-sm-2 col-form-label col-form-label-sm">&Sigma; (alphabet)</label><br>
+						<div class="col-sm-10">
+						<input required type="text" class="form-control form-control-sm" id="alphabets" placeholder="e.g 0 1 or a b etc, min 3 space separated">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="startState" class="col-sm-2 col-form-label col-form-label-sm">q0 (start state)</label>
+						<div class="col-sm-10">
+						<input required type="text" class="form-control form-control-sm" id="startState" placeholder="e.g q1; one only">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="finalStates" class="col-sm-2 col-form-label col-form-label-sm">F (final state)</label>
+						<div class="col-sm-10">
+						<input required type="text" class="form-control form-control-sm" id="finalStates" placeholder="e.g q2 q3; space separated">
+						</div>
+					</div>
+				</form><br>
+				</div>
+				<div id="tt" hidden >
+				<label>Transition Table:</label><br>
+				<label class="text-secondary">fill the transition below</label>
+				<!-- user need to fill the transition table -->
+				<table id="transition-table" class="table table-bordered">
+					<td>&epsilon;</td>
+				</table>
+				<!-- <button type="submit" class="btn btn-primary my-1" id="doneBut" onclick=done()>Done</button> -->
 			</div>
-		</div>
-		  <br>
-		<div style="float: left; padding-left: 70px;">
-			<div>
-				<label>Check Strings (input):</label><br>
-				<label class="text-secondary">enter min 5 strings to check</label>
-				<br>
-				<textarea id="stringCheck"></textarea>
-				<br>
-				<button id="nfa-check-btn" type="button" class="btn btn-primary" onclick="checkString()">Check</button>
+			<button type="submit" id="ttbut" class="btn btn-primary my-1" onclick=createTable() >Transition table</button>
 			</div>
+			  <br>
+			<div class="col-sm">
+				<div>
+					<label>Check Strings (input):</label><br>
+					<label class="text-secondary">enter min 5 strings to check</label>
+					<br>
+					<div class="row">
+
+						<div class="col-sm">
+	
+							<textarea id="stringCheck"></textarea>
+						</div>
+						<div class="col-sm">
+							<p>hai</p>
+						</div>
+					</div>
+					<br>
+					<button id="nfa-check-btn" type="button" class="btn btn-primary" onclick="checkString()">Check</button>
+				</div>
+			</div>
+			<div class="col-sm">
+				<h1>xxx</h1>
+				<h2>ccc</h2>
+			</div>
+
 		</div>
 		<button id="convert-nfa-btn" type="button" onclick="convertla()" class="btn btn-primary">Convert to ReG</button>
 

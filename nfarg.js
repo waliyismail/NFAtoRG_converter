@@ -13,6 +13,7 @@ function createTable()
     if(!alphabet_array.includes("&epsilon;")){alphabet_array.push("&epsilon;");}
     var table = document.getElementById("transition-table");
     var tt = document.getElementById("tt");
+    var tablebut = document.getElementById("ttbut");
 
 
     var newTable = '';
@@ -71,7 +72,8 @@ function createTable()
     table.innerHTML = newTable;
 
     tt.removeAttribute("hidden");
-    alert("You typed:\nStates: "+ states.value +"\nAlphabet: " + alphabet.value +"\nStart state: " + start.value +"\nFinal state: " + final.value );
+    tablebut.innerText = "Refresh table";
+;    alert("Your input:\nStates: "+ states.value +"\nAlphabet: " + alphabet.value +"\nStart state: " + start.value +"\nFinal state: " + final.value );
 }
 
 function checkform(form) {
@@ -123,12 +125,9 @@ function checkString()
     //check from the table and move from next state
     for(s in strings)
     {
-        for(var i =0; i<str.length ; i++)
+        if(acceptString())
         {
-            //check the value here
-            if(acceptString()){
-                <p>ok</p>
-            }
+            
         }
         
     }
@@ -137,5 +136,11 @@ function checkString()
 function acceptString()
 {
     //check if the a
-
+    for(var i =0; i<str.length ; i++)
+    {
+        //check the value here
+        // if(){
+        //     <p>ok</p>
+        // }
+    }
 }

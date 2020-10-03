@@ -33,15 +33,37 @@ function createTable()
             if(c==0)
             {
                 //enter each states
-                newTable += '<td>'+states_array[r-1].toUpperCase()+'</td>';
+                // check if it is start or final states
+                newTable += '<td><b>'
+                if(states_array[r-1] == start.value)
+                {
+                    // add > for start state
+                    newTable += '&#62;';
+                }
+                
+                if(final_array.includes(states_array[r-1]))
+                {
+                    // add * for final state
+                    newTable += '*';
+                }
+
+                newTable += states_array[r-1].toUpperCase()+'</b></td>';
                 continue;
             }
             if(r == 0 && c > 0)
             {
-                newTable += '<td>' + alphabet_array[c-1] +'</td>';
+                newTable += '<td><b>' + alphabet_array[c-1] +'</b></td>';
             }else{
-
-                newTable += '<td><input type="text" size="1" id=' + c + '/></td>';
+                // add dropdown containing the states
+                // newTable += '<td><input type="text" size="1" id=' + c + '/></td>';
+                newTable += '<td>';
+                newTable += '<select id="' +r.toString() +c.toString() + '">';
+                newTable += addOption(states_array);
+                // add Oslash
+                newTable+='<option selected value="empty">&Oslash;</option>';
+                newTable += '</select>'
+                newTable += '</td>';
+                //add options for states
             }
         }
         newTable += '</tr>';
@@ -76,4 +98,18 @@ function getArray(str)
     newstr = newstr.replace(/epsilon/,"&epsilon;");
     newstr = newstr.split("$");
     return newstr;
+}
+
+function addOption(array)
+{
+    //add option from the array
+    var str = '';
+    for(a in array)
+    {
+        str+='<option value="'+array[a]+'">'+(array[a]).toUpperCase()+'</option>';
+    }
+    return str;
+}
+function done(){
+    alert("go check string first");
 }

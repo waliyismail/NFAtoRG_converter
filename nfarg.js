@@ -57,6 +57,7 @@ function createTable()
             }else{
                 // add dropdown containing the states
                 // id for each cells SA states alphabet
+                console.log(states_array[r-1]+alphabet_array[c-1]);
                 newTable += '<td>';
                 newTable += '<select id="' +states_array[r-1]+alphabet_array[c-1]+ '">';
                 newTable += addOption(states_array);
@@ -122,15 +123,22 @@ function checkString()
     //if(!checkform(fdform)){return};
     var text = document.getElementById("stringCheck").value;
     var strings = text.split(/\r?\n/);
+    if(strings.includes("epsilon"))
+    {
+        strings[strings.indexOf("epsilon")] = "&epsilon;"
+    }
     //check from the table and move from next state
     for(s in strings)
     {
+
         if(s!=null && acceptString(strings[s],0,0 ))
         {
+            //TODO need to view this in the html
             console.log(strings[s] +" is ok");
         }
         else
         {
+            //TODO need to view this in the html
             console.log(strings[s] +" is no");
         }
     }
@@ -139,7 +147,48 @@ function convertToRg()
 {
     var states = getArray(document.getElementById("states").value);
     var finalStates = getArray(document.getElementById("finalStates").value);
+    var alphabets = getArray(document.getElementById("alphabets").value);
+    if(!alphabets.includes("&epsilon;")){alphabets.push("&epsilon;");}
+    var rg = '';
 
+    for(s in states)
+    {
+        
+        var rightArrow= "&#8594;";
+        rg += states[s].toUpperCase() +' ' + rightArrow +' ';
+        for(a in alphabets)
+        {
+            console.log(states[s]+alphabets[a]);
+            var cell = document.getElementById(states[s] + alphabets[a]);
+            console.log(states[s] + alphabets[a] +"is" + cell)
+            var cellValue = cell.options[cell.selectedIndex].value;
+            if(cellValue != "empty")
+            {
+                if(rg[rg.length-2] != ";")
+                {
+                    rg += " | ";
+                }
+
+                if(alphabets[a] === "&epsilon;")
+                {
+                    rg += cellValue;
+                }else{
+
+                    rg += alphabets[a]+ cellValue.toUpperCase();
+                }
+
+            }
+        }
+        if(finalStates.includes(states[s]))
+        {
+            rg += ' | &epsilon;';
+        }
+        rg+= "<br>";
+    }
+    var d = document.getElementById("rg-output")
+    d.innerHTML = rg;
+    d.removeAttribute("hidden");
+;
 }
 function acceptString(str, alph_i, state_i)
 {

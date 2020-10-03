@@ -125,23 +125,40 @@ function checkString()
     //check from the table and move from next state
     for(s in strings)
     {
-        if(acceptString(s))
+        if(s!=null && acceptString(strings[s],0,0 ))
         {
-            
+            console.log(strings[s] +" is ok");
         }
-        
+        else
+        {
+            console.log(strings[s] +" is no");
+        }
     }
-    alert(strings);
 }
-function acceptString(str)
+function convertToRg()
 {
-    //check if the a
-    for(var i =0; i<str.length ; i++)
-    {
+    var states = getArray(document.getElementById("states").value);
+    var finalStates = getArray(document.getElementById("finalStates").value);
+
+}
+function acceptString(str, alph_i, state_i)
+{
+        // if the char is the end of string
+        var states = getArray(document.getElementById("states").value);
+        var finalStates = getArray(document.getElementById("finalStates").value);
         
-        //check the value here
-        // if(){
-        //     <p>ok</p>
-        // }
-    }
+        var cell = document.getElementById(states[state_i] + str[alph_i]);
+        var cellValue = cell.options[cell.selectedIndex].value;
+        // console.log(states);
+        // console.log(finalStates);
+        // console.log(cellValue);
+        if (cellValue === "empty") return false;
+        
+        if(str.length == alph_i + 1)
+        {
+            //last alphabet must be in final states
+            if (finalStates.includes(cellValue)) return true;
+        }
+        // not a last string 
+        return acceptString(str, alph_i+1, states.indexOf(cellValue));
 }

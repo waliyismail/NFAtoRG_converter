@@ -60,7 +60,7 @@
 				<div class="form-group row">
 					<label for="alphabets" class="col-sm-2 col-form-label col-form-label-sm">&Sigma; (alphabet)</label><br>
 					<div class="col-sm-10">
-					<input required type="text" class="form-control form-control-sm" id="alphabets" placeholder="e.g 0 1 or a b etc, space separated">
+					<input required type="text" class="form-control form-control-sm" id="alphabets" placeholder="e.g 0 1 or a b etc, min 3 space separated">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -88,31 +88,26 @@
 			<button type="submit" class="btn btn-primary my-1" id="doneBut" onclick=done()>Done</button>
 			</div>
 		</div>
-
-		<br>
-
-		  
 		  <br>
 		<div style="float: left; padding-left: 70px;">
 			<div>
-				<label>Check Strings (input):</label>
+				<label>Check Strings (input):</label><br>
+				<label class="text-secondary">enter min 5 strings to check</label>
 				<br>
-				<textarea id="nfa-check-input"></textarea>
+				<textarea id="stringCheck"></textarea>
 				<br>
-				<button id="nfa-check-btn" type="button" class="btn btn-primary" onclick="check()">Check</button>
+				<button id="nfa-check-btn" type="button" class="btn btn-primary" onclick="checkString()">Check</button>
 			</div>
 		</div>
+		<button id="convert-nfa-btn" type="button" onclick="convertla()" class="btn btn-primary">Convert to ReG</button>
 
-	  <div id="rg-output" style="float: left; padding-right: 70px;">
+	  <div id="rg-output" hidden style="float: left; padding-right: 70px;">
 	    <p>Regular Grammar</p>
 	    <p>Q = {q1, q2}</p>
 		<p>S = {0,1}</p>
 		<p>d: Q x S  Q</p>
 		<p>p0 = q1</p>
 		<p>F = {q1}</p>
-
-		<button id="convert-nfa-btn" type="button" onclick="convertla()" class="btn btn-primary">Convert to ReG</button>
-
 	  </div>
 	  <br>
 

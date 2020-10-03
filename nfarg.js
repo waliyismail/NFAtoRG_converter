@@ -55,9 +55,9 @@ function createTable()
                 newTable += '<td><b>' + alphabet_array[c-1] +'</b></td>';
             }else{
                 // add dropdown containing the states
-                // newTable += '<td><input type="text" size="1" id=' + c + '/></td>';
+                // id for each cells SA states alphabet
                 newTable += '<td>';
-                newTable += '<select id="' +r.toString() +c.toString() + '">';
+                newTable += '<select id="' +states_array[r-1]+alphabet_array[c-1]+ '">';
                 newTable += addOption(states_array);
                 // add Oslash
                 newTable+='<option selected value="empty">&Oslash;</option>';
@@ -112,4 +112,30 @@ function addOption(array)
 }
 function done(){
     alert("go check string first");
+}
+
+function checkString()
+{
+    var fdform = document.getElementById("fdform");
+    //if(!checkform(fdform)){return};
+    var text = document.getElementById("stringCheck").value;
+    var strings = text.split(/\r?\n/);
+    //check from the table and move from next state
+    for(s in strings)
+    {
+        for(var i =0; i<str.length ; i++)
+        {
+            //check the value here
+            if(acceptString()){
+                <p>ok</p>
+            }
+        }
+        
+    }
+    alert(strings);
+}
+function acceptString()
+{
+    //check if the a
+
 }

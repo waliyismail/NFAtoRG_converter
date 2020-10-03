@@ -125,7 +125,7 @@ function checkString()
     //check from the table and move from next state
     for(s in strings)
     {
-        if(acceptString())
+        if(acceptString(s))
         {
             
         }
@@ -133,11 +133,12 @@ function checkString()
     }
     alert(strings);
 }
-function acceptString()
+function acceptString(str)
 {
     //check if the a
     for(var i =0; i<str.length ; i++)
     {
+        
         //check the value here
         // if(){
         //     <p>ok</p>

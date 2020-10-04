@@ -195,7 +195,22 @@ function acceptString(str, alph_i, state_i)
     // console.log(states);
     // console.log(finalStates);
     // console.log(cellValue);
-    if (cellValue === "empty") return false;
+    if (cellValue === "empty"){
+        //TODO consider epsilon transition
+        // if cell is empty, check if there is epsilon transition
+        // if there is epsilon transition, go to the cell, else return false
+        var e = document.getElementById(states[state_i] +"epsilon");
+        var eTrans = e.options[e.selectedIndex].value;
+        if(eTrans != "empty")
+        {
+            console.log("eTrans is not empty " + eTrans)
+            //cellValue = eTrans;
+            return acceptString(str, alph_i, states.indexOf(eTrans));
+        }
+        else{
+            return false;
+        } 
+    } 
     
     if(str.length == alph_i + 1)
     {

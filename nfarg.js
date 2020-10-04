@@ -201,6 +201,7 @@ function acceptString(str, alph_i, state_i)
     {
         //last alphabet must be in final states
         if (finalStates.includes(cellValue)) return true;
+        return false;
     }
     // not a last string 
     return acceptString(str, alph_i+1, states.indexOf(cellValue));

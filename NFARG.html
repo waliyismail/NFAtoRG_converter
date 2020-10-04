@@ -78,7 +78,9 @@
 					</div>
 				</form><br>
 				</div>
-				<div id="tt" hidden >
+				<button type="submit" id="ttbut" class="btn btn-primary my-1" onclick=createTable() >Transition table</button>
+			</div>
+			<div class="col-sm" id="tt" hidden >
 				<label>Transition Table:</label><br>
 				<label class="text-secondary">fill the transition below</label>
 				<!-- user need to fill the transition table -->
@@ -86,8 +88,7 @@
 					<td>&epsilon;</td>
 				</table>
 				<!-- <button type="submit" class="btn btn-primary my-1" id="doneBut" onclick=done()>Done</button> -->
-			</div>
-			<button type="submit" id="ttbut" class="btn btn-primary my-1" onclick=createTable() >Transition table</button>
+				
 			</div>
 			  <br>
 			<div class="col-sm">
@@ -107,17 +108,17 @@
 				</div>
 			</div>
 		</div>
-		<button id="convert-nfa-btn" type="button" onclick="convertToRg()" class="btn btn-primary">Convert to ReG</button>
-
-	  <div id="rg-output" hidden class="row">
-	    <p>Regular Grammar</p>
-	    <p>Q = {q1, q2}</p>
-		<p>S = {0,1}</p>
-		<p>d: Q x S  Q</p>
-		<p>p0 = q1</p>
-		<p>F = {q1}</p>
-	  </div>
-	  <br>
+		
+		<div class=" row border w-100 p-4 rounded border-primary">
+			<div id="rg-output" class="col-sm"  hidden>
+				<p>this should be hidden</p>
+			</div>
+			<br>
+			<div class ="row">
+				<button id="convert-nfa-btn" type="button" onclick="convertToRg()" class="btn btn-primary">Convert to Regular Grammar</button>
+			</div>
+		</div>
+	</div>
 
   </body>
 </html>

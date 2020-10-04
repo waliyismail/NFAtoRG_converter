@@ -84,7 +84,7 @@ function createTable()
 
     tt.removeAttribute("hidden");
     tablebut.innerText = "Refresh table";
-;    alert("Your input:\nStates: "+ states.value +"\nAlphabet: " + alphabet.value +"\nStart state: " + start.value +"\nFinal state: " + final.value );
+;   confirm("Your input:\nStates: "+ states.value +"\nAlphabet: " + alphabet.value +"\nStart state: " + start.value +"\nFinal state: " + final.value );
 }
 
 function statesDropdown()
@@ -146,7 +146,7 @@ function done(){
 function checkString()
 {
     var fdform = document.getElementById("fdform");
-    //if(!checkform(fdform)){return};
+    if(!checkform(fdform)){return};
     var finalStates = getArray(document.getElementById("finalStates").value);
     var startState = document.getElementById("startState");
     var text = document.getElementById("stringCheck");
@@ -223,6 +223,8 @@ function acceptString(str, alph_i, state_i)
 }
 function convertToRg()
 {
+    var fdform = document.getElementById("fdform");
+    if(!checkform(fdform)){return};
     var states = getArray(document.getElementById("states").value);
     var finalStates = getArray(document.getElementById("finalStates").value);
     var alphabets = getArray(document.getElementById("alphabets").value);

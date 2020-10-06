@@ -47,96 +47,23 @@
 	    <br>
 	    <textarea id="rg-input"></textarea>
 		<br>
-		<button id="convert-rg-btn" type="button" class="btn btn-primary">Convert to NFA</button>
+		<button id="convert-rg-btn" type="button" class="btn btn-primary" onclick="toTransition()">Convert to NFA</button>
 	  </div>
-	  <div>
+	  <div style="float: left; padding-right: 10px;">
 	    <label>Check Strings (input):</label>
 	    <br>
 	    <textarea id="rg-check-input"></textarea>
 		<br>
-		<button id="rg-check-btn" type="button" class="btn btn-primary">Check</button>
+		<button id="rg-check-btn" type="button" class="btn btn-primary" onclick="checkStrings()">Check</button>
 	  </div>
-	  <br>
+	  <div id="check-strings-result" style="float: left;">
+	  </div>
+	  <br><br><br><br><br><br><br><br><br><br><br><br><br>
 	  <div id="formal-description" style="float: left; padding-right: 70px;">
-	    <p>Q = {q1, q2}</p>
-		<p>S = {0,1}</p>
-		<p>d: Q x S  Q</p>
-		<p>p0 = q1</p>
-		<p>F = {q1}</p>
 	  </div>
-	  <div style="float: left; padding-right: 70px;">
-	    <label>Transition Table</label>
-	    <table id="transition-table" class="table table-bordered">
-		  <thead>
-			<tr>
-			  <th scope="col"></th>
-			  <th scope="col">a</th>
-			  <th scope="col">b</th>
-			  <th scope="col">ε</th>
-			</tr>
-		  </thead>
-		  <tbody>
-			<tr>
-			  <th scope="row">A</th>
-			  <td>R</td>
-			  <td>Ø</td>
-			  <td>Ø</td>
-			</tr>
-			<tr>
-			  <th scope="row">R</th>
-			  <td>S</td>
-			  <td>R</td>
-			  <td>Ø</td>
-			</tr>
-			<tr>
-			  <th scope="row">S</th>
-			  <td>Ø</td>
-			  <td>T</td>
-			  <td>Ø</td>
-			</tr>
-			<tr>
-			  <th scope="row">*T</th>
-			  <td>Ø</td>
-			  <td>Ø</td>
-			  <td>R</td>
-			</tr>
-		  </tbody>
-		</table>
-		<button id="convert-nfa-w-btn" type="button" class="btn btn-primary">To NFA without ε</button>
+	  <div id="transition-table" style="float: left; padding-right: 70px;">
 	  </div>
-	  <div>
-	    <label>Transition Table W/O ε</label>
-	    <table id="transition-table-w" class="table table-bordered">
-		  <thead>
-			<tr>
-			  <th scope="col"></th>
-			  <th scope="col">a</th>
-			  <th scope="col">b</th>
-			</tr>
-		  </thead>
-		  <tbody>
-			<tr>
-			  <th scope="row">A</th>
-			  <td>R</td>
-			  <td>Ø</td>
-			</tr>
-			<tr>
-			  <th scope="row">R</th>
-			  <td>S</td>
-			  <td>R</td>
-			</tr>
-			<tr>
-			  <th scope="row">S</th>
-			  <td>Ø</td>
-			  <td>T,R</td>
-			</tr>
-			<tr>
-			  <th scope="row">*T</th>
-			  <td>S</td>
-			  <td>R</td>
-			</tr>
-		  </tbody>
-		</table>
+	  <div id="transition-table-we">
 	  </div>
 	  <br>
 	  

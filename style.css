@@ -78,3 +78,7 @@ nav li {
 	}
 	 
   }
+
+.dropdown-menu label {
+display: block;
+}

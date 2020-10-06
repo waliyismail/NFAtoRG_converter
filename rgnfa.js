@@ -24,7 +24,7 @@ function parse() {
 	array = input.split(/[->\n]+/);
 	
 	var str = "";
-	
+	//stores all states available
 	for (var i = 0; array.length > i; i+= 2) {
 		states += array[i];
 	}
@@ -40,8 +40,11 @@ function parse() {
 	
 	str = str.split("|").join("");
 	str += "e";
+	
+	//stores all alphabet available
 	alphabet = str.replace(/(.)(?=.*\1)/g, "");
 	
+	//formal description output
 	var output = '<p>Q = {'+states[0];
 	
 	for (var i = 1; states.length > i; i++) {
@@ -66,6 +69,7 @@ function checkStrings() {
 
 	var resultArr = [];
 	
+	//loop through characters of string until elimination condition is triggered, if no elimination condition is triggered, the string can be accepted by the regular grammar
 	for (var i = 0, stateIndex = 0, pass = true; checkInput.length > i; i++, stateIndex = 0, pass = true) {
 		for (var j = 0; checkInput[i].length > j; j++) {
 			var alphabetIndex = array[stateIndex+1].indexOf(checkInput[i][j]);
@@ -87,6 +91,7 @@ function checkStrings() {
 		}
 	}
 	
+	//check strings result output
 	var output = '<br><p></p>';
 	
 	for (var i = 0; resultArr.length > i; i++) {
@@ -131,6 +136,7 @@ function toTransition() {
 		}
 	}
 	
+	//transition table output
 	var output = '<label>Transition Table</label><table class="table table-bordered"><thead><tr><th scope="col"></th>';
 	
 	for (var i = 0; alphabet.length - 1 > i; i++) {
@@ -168,6 +174,7 @@ function toTransitionWE() {
 	var epsilonNext = [];
 	var modified = false;
 	
+	//check which state has epsilon input and which state it leads to
 	for (var i = 0; states.length > i; i++) {
 		if (wetable[i][alphabet.length-1] != "Ø") {
 			epsilonState.push(states[i]);
@@ -175,6 +182,7 @@ function toTransitionWE() {
 		}
 	}
 	
+	//consider state A has epsilon input which leads to state C, if state B has a certain input that leads to state A, state C which can be achieved through epsilon is added beside state A
 	for (var i = 0; states.length > i; i++) {
 		for (var j = 0; epsilonState.length > j; j++) {
 			for (var k = 0; alphabet.length-1 > k; k++) {
@@ -190,7 +198,8 @@ function toTransitionWE() {
 			continue;
 		}		
 	}
-
+	
+	//consider state A has epsilon input which leads to state C, union of transition table of state C is perform upon state A
 	for (var i = 0; epsilonState.length > i ; i++) {
 		var baseRow = states.indexOf(epsilonState[i]);
 		var addRow = states.indexOf(epsilonNext[i]);
@@ -221,10 +230,12 @@ function toTransitionWE() {
 		}
 	}
 	
+	//remove last column that was originally epsilon
 	for (var i = 0; states.length > i; i++) {
 		wetable[i].pop();
 	}
 	
+	//transition table w/o eplison output
 	var output = '<label>Transition Table W/O ε</label><table class="table table-bordered"><thead><tr><th scope="col"></th>';
 	
 	for (var i = 0; alphabet.length - 1 > i; i++) {
@@ -250,4 +261,3 @@ function toTransitionWE() {
 	output += '</tbody></table>';
 	document.getElementById("transition-table-we").innerHTML = output;
 }
-

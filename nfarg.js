@@ -143,6 +143,7 @@ function done(){
     alert("go check string first");
 }
 
+//IMPORTANT CODE
 function checkString()
 {
     var fdform = document.getElementById("fdform");
@@ -184,6 +185,7 @@ function checkString()
     }
     text.value = t;
 }
+//IMPORTANT CODE
 function acceptString(str, alph_i, state_i)
 {
     // if the char is the end of string
@@ -221,6 +223,8 @@ function acceptString(str, alph_i, state_i)
     // not a last string 
     return acceptString(str, alph_i+1, states.indexOf(cellValue));
 }
+
+//IMPORTANT CODE
 function convertToRg()
 {
     var fdform = document.getElementById("fdform");

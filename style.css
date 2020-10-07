@@ -68,7 +68,11 @@ nav li {
 	width: 250px;
 	height: 450px;
   }
-  
+img{
+	max-width: 200px;
+	height: 250px;
+	justify-content: center;
+}
   /* Responsive columns - one column layout (vertical) on small screens */
   @media screen and (max-width: 600px) {
 	.column {
